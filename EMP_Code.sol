@@ -1,16 +1,17 @@
 /**
- *Submitted for verification at BscScan.com on 2021-08-04
+ *Submitted for verification at BscScan.com on 2021-06-09
 */
 
 /*
 
-Welcome:
-Empiricus Token it’s a BEP-20 Token that aims to promote the development of new technologies capable to promote the access of a good quality energy, based on a clean and sustainable energy Matrix. For more information visit the link bellow :
-https://empiricustoken.com/ 
+Welcome to Empiricus Token
+-  10,000,000,000 Total Supply
 
-The crypto active market, is prone to a intense volatility and is high risk.
-
-10,000,000,000 Total Supply 
+— 9% Total Fee
+- 5% Fee redistributed to all holders
+- 2% Fee added to liquidity and locked
+- 1% Automatic burn
+- 1% MarketingWallet 
 
 Name: Empiricus Token
 Symbol: EMP
@@ -697,7 +698,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
 }
 
 
-contract Empiricus_Token is Context, IERC20, Ownable {
+contract Empiricus is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
@@ -719,17 +720,17 @@ contract Empiricus_Token is Context, IERC20, Ownable {
     string private _symbol = "EMP";
     uint8 private _decimals = 9;
     
-    uint256 public _taxFee = 1;
+    uint256 public _taxFee = 5;
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 1;
+    uint256 public _liquidityFee = 2;
     uint256 private _previousLiquidityFee = _liquidityFee;
 
-    uint256 public _burnFee = 1;
+    uint256 public _burnFee = 1; //dead
     uint256 private _previousBurnFee = _burnFee;
 
-    uint256 public _charityFee = 7;
-    address public charityWallet = 0x964698547F6f438261191745e1f9850D40DF19d1;
+    uint256 public _charityFee = 2; //dev wallet
+    address public charityWallet = 0xB82BC8354564C6B742Ebac74e2c6A8df0dD3b73e;
     uint256 private _previouscharityFee = _charityFee;
 
     IUniswapV2Router02 public  uniswapV2Router;
@@ -757,7 +758,7 @@ contract Empiricus_Token is Context, IERC20, Ownable {
     constructor () public {
         _rOwned[_msgSender()] = _rTotal;
         
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
          // Create a uniswap pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
